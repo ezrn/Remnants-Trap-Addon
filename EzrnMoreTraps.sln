@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzrnMoreTraps", "EzrnMoreTraps.csproj", "{55BE7700-825A-4BF2-8377-BCDE1A3AC0FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55BE7700-825A-4BF2-8377-BCDE1A3AC0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55BE7700-825A-4BF2-8377-BCDE1A3AC0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55BE7700-825A-4BF2-8377-BCDE1A3AC0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55BE7700-825A-4BF2-8377-BCDE1A3AC0FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3B81EDB-91CA-4B52-8F37-922B509B6FEE}
+	EndGlobalSection
+EndGlobal

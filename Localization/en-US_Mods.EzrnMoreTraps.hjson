@@ -1,0 +1,124 @@
+Items: {
+	SpikyBallTrapLowTier: {
+		DisplayName: Weak Spiky Ball Trap
+		Tooltip: Drops bouncing spike balls.
+	}
+
+	DartTrapLowTier: {
+		DisplayName: Weak Dart Trap
+		Tooltip: Shoots poison darts.
+	}
+
+	FlameTrapLowTier: {
+		DisplayName: Weak Flame Trap
+		Tooltip: Shoots flames.
+	}
+
+	DartTrapLowTier_Left: {
+		DisplayName: Dart Trap Low Tier_ Left
+		Tooltip: ""
+	}
+
+	DartTrapLowTier_Right: {
+		DisplayName: Dart Trap Low Tier_ Right
+		Tooltip: ""
+	}
+
+	FlameTrapLowTier_Left: {
+		DisplayName: Flame Trap Low Tier_ Left
+		Tooltip: ""
+	}
+
+	FlameTrapLowTier_Right: {
+		DisplayName: Flame Trap Low Tier_ Right
+		Tooltip: ""
+	}
+}
+
+Tiles: {
+	FlameTrapLowTier: Low-Tier Flame Trap
+	DartTrapLowTier: Low-Tier Dart Trap
+	SpikyBallTrapLowTier: Low-Tier Spiky Ball Trap
+}
+
+Configs: {
+	EzrnMoreTrapsConfig: {
+		DisplayName: Ezrn More Traps Config
+
+		Headers: {
+			CavernChestSettings: Cavern Chest Settings Header
+			NewTrapsSettings: New Traps Settings Header
+			TrapDamageSettings: Trap Damage Settings Header
+		}
+
+		CavernChestsFrequency: {
+			Label: Cavern Chests Frequency
+			Tooltip: Adjust the frequency of additional cavern chests generation. (0.0 = none, 1.0 = maximum)
+		}
+
+		AddMoreChestItems: {
+			Label: Add More Chest Items
+			Tooltip: Enable or disable adding more loot to chests.
+		}
+
+		WebStackingEnabled: {
+			Label: Stack webs in remnants chests
+			Tooltip: Whether to stack webs in remnants chests or not
+		}
+
+		NewTrapsFrequency: {
+			Label: New Traps Frequency
+			Tooltip: Adjust the frequency for adding new traps. (0.0 = none, 1.0 = maximum)
+		}
+
+		UseSpikyBallTraps: {
+			Label: Enable Spiky Ball Traps?
+			Tooltip: Enable or disable adding spiky ball traps
+		}
+
+		DoDeadManChests: {
+			Label: Enable Dead Man's Chests?
+			Tooltip: Enable or disable adding dead mans chests
+		}
+
+		DeadManChestFrequency: {
+			Label: Dead mans chest frequency
+			Tooltip: Adjust the frequency for adding dead mans chests (0.0 = none, 1.0 = maximum)
+		}
+
+		DoHeartBoulders: {
+			Label: Enable Heart Crystal Boulders?
+			Tooltip: Enable or disable heart boulders
+		}
+
+		HeartBoulderFrequency: {
+			Label: Frequency of heart boulders
+			Tooltip: Adjust the frequency for adding heart boulders (0.0 = none, 1.0 = maximum)
+		}
+
+		DoBouncyBoulders: {
+			Label: Enable bouncy boulders?
+			Tooltip: Enable or disable bouncy boulders
+		}
+
+		BouncyBoulderFrequency: {
+			Label: Frequency of bouncy boulders
+			Tooltip: Adjust the frequency for adding bouncy boulders (0.0 = none, 1.0 = maximum)
+		}
+
+		FlameDamage: {
+			Label: Flamethrower damage
+			Tooltip: Adjust the damage of flamethrower traps
+		}
+
+		DartDamage: {
+			Label: Dart damage
+			Tooltip: Adjust the damage of dart traps
+		}
+
+		SpikyBallDamage: {
+			Label: Spiky ball damage
+			Tooltip: Adjust the damage of spiky ball traps
+		}
+	}
+}
