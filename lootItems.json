@@ -1,0 +1,132 @@
+[
+    {
+        "internalName": "CalamityMod:GildedDagger",
+        "amount": 1
+    }, //rogue
+
+    {
+        "internalName": "CalamityMod:IronFrancisca",
+        "amount": 300
+    }, //rogue
+
+    {
+        "internalName": "CalamityMod:SeafoamBomb",
+        "amount": 1
+    }, //rogue
+
+    {
+        "internalName": "CalamityMod:WulfrumKnife",
+        "amount": 300
+    }, //rogue
+
+    {
+        "internalName": "ThoriumMod:Flurry",
+        "amount": 1
+    }, //mage
+
+    {
+        "internalName": "ThoriumMod:HexWand",
+        "amount": 1
+    }, //mage
+
+    {
+        "internalName": "CalamityMod:SparklingEmpress",
+        "amount": 1
+    }, //mage
+
+    {
+        "internalName": "CalamityMod:WulfrumBlunderbuss",
+        "amount": 1
+    }, //ranged
+
+    {
+        "internalName": "ThoriumMod:HarpyPelter",
+        "amount": 1
+    }, //ranged
+
+    {
+        "internalName": "CalamityMod:SparkSpreader",
+        "amount": 1
+    }, //ranged
+
+    {
+        "internalName": "ThoriumMod:GoldBugleHorn",
+        "amount": 1
+    }, //bard
+
+    {
+        "internalName": "ThoriumMod:BloomingBell",
+        "amount": 1
+    }, //bard
+
+    {
+        "internalName": "CalamityBardHealer:WulfrumMegaphone",
+        "amount": 1
+    }, //bard
+
+    {
+        "internalName": "ThoriumMod:Bagpipe",
+        "amount": 1
+    }, //bard
+
+    {
+        "internalName": "ThoriumMod:RottenCod",
+        "amount": 1
+    }, //healer
+
+    {
+        "internalName": "ThoriumMod:HereticBreaker",
+        "amount": 1
+    }, //healer
+
+    {
+        "internalName": "ThoriumMod:BountifulHarvest",
+        "amount": 1
+    }, //healer
+
+    {
+        "internalName": "ThoriumMod:BountifulHarvest",
+        "amount": 1
+    }, //healer
+
+    {
+        "internalName": "ThoriumMod:LeechBolt",
+        "amount": 1
+    }, //healer
+
+    {
+        "internalName": "ThoriumMod:PrehistoricAmberStaff",
+        "amount": 1
+    }, //summoner
+
+    {
+        "internalName": "ThoriumMod:SeahorseWand",
+        "amount": 1
+    }, //summoner
+
+    {
+        "internalName": "CalamityMod:WulfrumController",
+        "amount": 1
+    }, //summoner
+
+    {
+        "internalName": "CalamityMod:WulfrumScrewdriver",
+        "amount": 1
+    }, //melee
+
+    {
+        "internalName": "BladedGlove",
+        "amount": 1
+    }, //melee
+
+    {
+        "internalName": "CalamityMod:MonstrousKnives",
+        "amount": 1
+    } //melee
+
+
+
+
+
+
+]

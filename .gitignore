@@ -1,0 +1,21 @@
+# Build output directories
+bin/
+obj/
+
+# Compiled binaries
+*.dll
+*.exe
+
+# Log files and temporary directories
+*.log
+temp/
+
+# IDE/editor folders
+.vscode/
+.idea/
+.vs/
+
+# System files
+.DS_Store
+Thumbs.db
+
