@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 public class AddHeartBoulders : ITrapModifier
 {
-    public void ModifyWorldWithTraps(TrapData data)
+    public void ModifyWorldWithTraps(TrapData data) //overrides ItrapModifier
     {
         if (!ModContent.GetInstance<EzrnMoreTrapsConfig>().DoHeartBoulders)
             return;

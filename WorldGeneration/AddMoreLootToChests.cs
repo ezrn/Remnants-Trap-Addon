@@ -81,9 +81,9 @@ public class AddMoreLootToChests
             return;
         }
 
-        // Randomly select one loot item from the loaded JSON list
+        // randomly select one loot item from the loaded JSON list
         LootItem selectedLoot = lootItems[Main.rand.Next(lootItems.Count)];
-        // Resolve the internal name to an item type
+        // resolve the internal name to an item type
         int type = GetItemTypeByInternalName(selectedLoot.internalName);
         if (type == -1)
         {

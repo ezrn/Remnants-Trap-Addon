@@ -10,7 +10,7 @@ namespace EzrnMoreTraps.WorldGen
     public class AddTraps
     {
         private const int minDistance = 3;
-        private const int maxDistance = 60;
+        private const int maxDistance = 75;
 
         public void PlaceTraps(float frequency)
         {
@@ -79,7 +79,7 @@ namespace EzrnMoreTraps.WorldGen
             Tile tile = Framing.GetTileSafely(x, y);
             if (tile.HasTile && tile.TileType == 314)
             {
-                // Determine style by tile.TileFrameX / 18.
+                // determine style by tile.TileFrameX / 18.
                 int style = tile.TileFrameX / 18;
                 if (style == 1)
                     return true;
@@ -125,7 +125,7 @@ namespace EzrnMoreTraps.WorldGen
             // clear area below trap
             ClearAreaBelowTrap(trapX, trapY, plateY);
 
-            // chance to add more nearby traps
+            // chance to add a second trap
             if (Terraria.WorldGen.genRand.Next(2) == 0)
             {
                 int extraRightX = trapX + 1;
@@ -139,7 +139,7 @@ namespace EzrnMoreTraps.WorldGen
                     Terraria.WorldGen.SquareTileFrame(extraRightX, trapY);
                 }
             }
-            // another chance to add another trap
+            // another chance to add a third trap
             if (Terraria.WorldGen.genRand.Next(2) == 0)
             {
                 int extraLeftX = trapX - 1;
@@ -147,7 +147,7 @@ namespace EzrnMoreTraps.WorldGen
                 {
                     Terraria.WorldGen.KillTile(extraLeftX, trapY, noItem: true);
                     Terraria.WorldGen.PlaceTile(extraLeftX, trapY, spikyBallTileID, forced: true);
-                    ClearAreaBelowTrap(extraLeftX, trapY, plateY);
+                    ClearAreaBelowTrap(extraLeftX, trapY, plateY - 2);
                     Framing.GetTileSafely(extraLeftX, trapY).RedWire = true;
                     Terraria.WorldGen.SquareTileFrame(extraLeftX, trapY);
                 }
@@ -155,7 +155,8 @@ namespace EzrnMoreTraps.WorldGen
             return true;
         }
 
-        private void ClearAreaBelowTrap(int x, int startY, int endY)
+        //used for spiky ball traps to assure they dont drop the balls into the ceiling blocks
+        private void ClearAreaBelowTrap(int x, int startY, int endY) 
         {
             for (int y = startY + 1; y < endY; y++)
             {
@@ -167,14 +168,9 @@ namespace EzrnMoreTraps.WorldGen
 
         public bool TryPlaceFlameOrDartTrap(int plateX, int plateY)
         {
-            // check ceiling again(idk why this is here but if it aint broke dont fix it)
-            (int ceilingX, int ceilingY) = FindAirBelowSolid(plateX, plateY, 50);
-            if (ceilingX == -1 || (plateY - ceilingY) < minDistance)
-                return false;
-
             bool isRail = IsPressurePlateRail(plateX, plateY);
 
-            int offset = isRail ? 0 : Terraria.WorldGen.genRand.Next(0, 3); // for rail mode, force offset = 0
+            int offset = isRail ? 0 : Terraria.WorldGen.genRand.Next(0, 3); // for rail mode, force offset = 0(on the rail y level)
             int trapY = plateY - offset;
             if (trapY < 0)
                 return false;
@@ -203,13 +199,12 @@ namespace EzrnMoreTraps.WorldGen
                 candidateX = candidateX + direction;
             }
 
-            if (!isRail)
+            if (!isRail)// trap picking logic
             {
-                // trap picking logic
-                bool useFlameTrap = (horizDistance <= 15);
+                bool useFlameTrap = (horizDistance <= 15); //since flame traps have shorter range
 
                 Tile candidateTile = Framing.GetTileSafely(candidateX, trapY);
-                if (candidateTile.LiquidAmount > 0 && candidateTile.LiquidType == LiquidID.Water)
+                if (candidateTile.LiquidAmount > 0 && candidateTile.LiquidType == LiquidID.Water) //dont place flame traps in water
                 {
                     useFlameTrap = false;
                 }
@@ -222,7 +217,7 @@ namespace EzrnMoreTraps.WorldGen
                     Terraria.WorldGen.PlaceTile(candidateX, trapY, flameTileID, forced: true, style: plateIsRight ? 0 : 1);
                     Tiles.FlameTrapLowTier.SetStyle(candidateX, trapY, plateIsRight ? 0 : 1);
                 }
-                else
+                else //dart traps if useFlameTrap is false
                 {
                     int dartTileID = ModContent.TileType<Tiles.DartTrapLowTier>();
                     Terraria.WorldGen.KillTile(candidateX, trapY, noItem: true);
@@ -233,7 +228,7 @@ namespace EzrnMoreTraps.WorldGen
             }
             else
             {
-                //for rails just use 50/50
+                //for rails just use 50/50 for trap selection since player is moving constantly
                 bool useFlameTrap = (Terraria.WorldGen.genRand.Next(2) == 0);
                 if (useFlameTrap)
                 {
@@ -255,7 +250,7 @@ namespace EzrnMoreTraps.WorldGen
                 TryReplaceRails(candidateX, trapY);
             }
 
-            // support the trap if its floating
+            // support the trap if its floating with a single stone block(rarely happens but looks a bit nicer if it does)
             for (int k = 1; k <= offset; k++)
             {
                 int blockY = trapY + k;
@@ -276,7 +271,11 @@ namespace EzrnMoreTraps.WorldGen
             return true;
         }
 
-        private void TryReplaceRails(int x, int y) //create a gap to place traps under rails
+        /*
+         * This method removes a 3 wide area of rails around a trap, then places the rails one tile up
+         * this essentially allows the traps to be inside of the rail(since remnants rails are srtaight lines)
+         */
+        private void TryReplaceRails(int x, int y)
         {
             bool replacedAny = false;
             if (IsNormalRail(x, y))
@@ -323,6 +322,8 @@ namespace EzrnMoreTraps.WorldGen
             }
             return false;
         }
+
+        //returns the location for a valid trap location, useful for other methods
         private (int candidateX, int horizDistance) ScanForCandidate(int plateX, int trapY, int direction)
         {
             int candidateX = -1;
@@ -345,14 +346,11 @@ namespace EzrnMoreTraps.WorldGen
             return (candidateX, distance);
         }
 
-
+        //this method is somewhat faulty, allowing for "buried" pressure plates
+        //finds the first air block below a non-air block(logically this was necessary in some circumstances)
+        //vs just using solid vs non solid
         public (int x, int y) FindAirBelowSolid(int startX, int startY, int maxUp)
         {
-            // initial check for burried pressure plates, kill if this happens
-            Tile initialAbove = Framing.GetTileSafely(startX, startY - 1);
-            if (initialAbove.HasTile && initialAbove.TileType != TileID.Containers)
-                return (-1, -1);
-
             for (int offset = 1; offset <= maxUp; offset++)
             {
                 int checkY = startY - offset;
@@ -360,11 +358,13 @@ namespace EzrnMoreTraps.WorldGen
                     break;
                 Tile above = Framing.GetTileSafely(startX, checkY - 1);
                 Tile current = Framing.GetTileSafely(startX, checkY);
-                if (above.HasTile && above.TileType != TileID.Containers && !current.HasTile)
+                if (above.HasTile && !current.HasTile)
                     return (startX, checkY);
             }
             return (-1, -1);
         }
+
+        //Finds the first air block above a solid tile
         public (int x, int y) FindAirAboveSolid(int startX, int startY, int maxDown)
         {
             for (int offset = 0; offset <= maxDown; offset++)
@@ -387,8 +387,8 @@ namespace EzrnMoreTraps.WorldGen
             return (-1, -1);
         }
 
-
-        private void WireHorizontalAndVertical(int x1, int y1, int x2, int y2) // properly wires traps
+        //properly wires traps
+        private void WireHorizontalAndVertical(int x1, int y1, int x2, int y2)
         {
             int stepX = (x2 > x1) ? 1 : -1;
             for (int x = x1; x != x2; x += stepX)

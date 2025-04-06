@@ -7,12 +7,13 @@ using Terraria.GameContent.Generation;
 using Terraria.IO;
 using EzrnMoreTraps.WorldGen;
 using EzrnMoreTraps;
+using System;
 
 public class ScanWorld : ModSystem
 {
 
     private TrapData trapData;
-    public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
+    public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight) //world gen passes
     {
         int oasisIndex = tasks.FindIndex(pass => pass.Name == "Oasis");
         if (oasisIndex != -1)
@@ -129,7 +130,10 @@ public class ScanWorld : ModSystem
                 if (blockUnderChest.TileType != TileID.Mud && blockUnderChest.TileType != TileID.RichMahogany &&
                     blockUnderChest.TileType != TileID.SnowBrick && blockUnderChest.TileType != TileID.WoodBlock)
                 {
-                    data.TrappableChestIndices.Add(i);
+                    data.TrappableChestIndices.Add(i); //dont store chests that generate inside of buildings
+                    //somewhat of a rudimentary check, could be improved
+                    //no check to make sure its a gold chest, so if a different type of chest is picked it will 
+                    //convert it to deadmans nonetheless
                 }
             }
         }

@@ -14,7 +14,7 @@ public class AddDeadmansChests : ITrapModifier
 
         float frequency = ModContent.GetInstance<EzrnMoreTrapsConfig>().DeadManChestFrequency;
 
-        // chance for each gold chest to become a dead mans chest
+        // chance for each gold chest(stored in trapData) to become a dead mans chest
         foreach (int chestIndex in data.TrappableChestIndices)
         {
             if (Main.rand.NextFloat() < frequency)
@@ -66,40 +66,34 @@ public class AddDeadmansChests : ITrapModifier
         AddTraps traps = new AddTraps();
 
         //random trap for chest
-        (int ceilingX, int ceilingY) = traps.FindAirBelowSolid(x, y + 1, 50);
+        (int ceilingX, int ceilingY) = traps.FindAirBelowSolid(x, y, 50);
         bool trapPlaced = false;
 
-        if (ceilingX == -1 || (y - ceilingY) < 3)
+        //50% chance for dynamite, 50% chance for another trap. If traps fail to place, defaults to dynamite
+        float roll = (float)Main.rand.NextDouble();
+        if (roll < 0.5f)
         {
-            PlaceDynamiteTrapUnderChest(x, y);
-            trapPlaced = true;
-        }
-        else
-        {
-            float roll = (float)Main.rand.NextDouble();
-            if (roll < 0.5f)
+            float altRoll = (float)Main.rand.NextDouble();
+            if (altRoll < 0.5f)
             {
-                float altRoll = (float)Main.rand.NextDouble();
-                if (altRoll < 0.5f)
-                {
-                    trapPlaced = traps.SetupSpikyBallTrap(x, y + 1);
-                }
-                else
-                {
-                    trapPlaced = traps.TryPlaceFlameOrDartTrap(x, y + 1);
-                }
-                if (!trapPlaced)
-                {
-                    PlaceDynamiteTrapUnderChest(x, y);
-                    trapPlaced = true;
-                }
+                trapPlaced = traps.SetupSpikyBallTrap(x, y + 1);
             }
             else
+            {
+                trapPlaced = traps.TryPlaceFlameOrDartTrap(x, y + 1);
+            }
+            if (!trapPlaced)
             {
                 PlaceDynamiteTrapUnderChest(x, y);
                 trapPlaced = true;
             }
         }
+        else
+        {
+            PlaceDynamiteTrapUnderChest(x, y);
+            trapPlaced = true;
+        }
+        
 
         //refresh visuals of chest
         Terraria.WorldGen.SquareTileFrame(x, y);
@@ -108,7 +102,7 @@ public class AddDeadmansChests : ITrapModifier
         Terraria.WorldGen.SquareTileFrame(x + 1, y + 1);
     }
 
-    private void PlaceDynamiteTrapUnderChest(int chestX, int chestY)
+    private void PlaceDynamiteTrapUnderChest(int chestX, int chestY) //places the dynamite trap
     {
         int primaryX = chestX;
         int primaryY = chestY + 4;

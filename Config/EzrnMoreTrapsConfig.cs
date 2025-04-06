@@ -73,17 +73,17 @@ namespace EzrnMoreTraps
         [Header("TrapDamageSettings")]
         [Label("Flamethrower Damage")]
         [Tooltip("Adjust the damage of flamethrower traps")]
-        [DefaultValue(25)]
+        [DefaultValue(35)]
         public int FlameDamage;
 
         [Label("Dart Damage")]
         [Tooltip("Adjust the damage of dart traps")]
-        [DefaultValue(25)]
+        [DefaultValue(35)]
         public int DartDamage;
 
         [Label("Spiky Ball Damage")]
         [Tooltip("Adjust the damage of spiky ball traps")]
-        [DefaultValue(25)]
+        [DefaultValue(35)]
         public int SpikyBallDamage;
     }
 }

@@ -62,7 +62,7 @@ public class GenerateNewChests
 
     private bool IsJungleBiome(int x, int y)
     {
-        // really basic jungle check
+        // really basic jungle check, sometimes generates these in mushroom biomes
         Tile tile = Framing.GetTileSafely(x, y);
         if (tile.TileType == TileID.JungleGrass || tile.TileType == TileID.Mud) return true;
         if (tile.WallType == WallID.JungleUnsafe || tile.WallType == WallID.MudUnsafe) return true;
@@ -71,7 +71,7 @@ public class GenerateNewChests
 
     private bool IsIceBiome(int x, int y)
     {
-        // really basic ice check
+        // really basic ice check, needs to be improved
         Tile tile = Framing.GetTileSafely(x, y);
         if (tile.WallType == WallID.SnowWallUnsafe) return true;
         if (tile.TileType == TileID.SnowBlock || tile.TileType == TileID.IceBlock)

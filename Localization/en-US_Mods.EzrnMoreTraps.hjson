@@ -43,82 +43,82 @@ Tiles: {
 
 Configs: {
 	EzrnMoreTrapsConfig: {
-		DisplayName: Ezrn More Traps Config
-
-		Headers: {
-			CavernChestSettings: Cavern Chest Settings Header
-			NewTrapsSettings: New Traps Settings Header
-			TrapDamageSettings: Trap Damage Settings Header
-		}
-
-		CavernChestsFrequency: {
-			Label: Cavern Chests Frequency
-			Tooltip: Adjust the frequency of additional cavern chests generation. (0.0 = none, 1.0 = maximum)
-		}
-
-		AddMoreChestItems: {
-			Label: Add More Chest Items
-			Tooltip: Enable or disable adding more loot to chests.
-		}
-
-		WebStackingEnabled: {
-			Label: Stack webs in remnants chests
-			Tooltip: Whether to stack webs in remnants chests or not
-		}
-
-		NewTrapsFrequency: {
-			Label: New Traps Frequency
-			Tooltip: Adjust the frequency for adding new traps. (0.0 = none, 1.0 = maximum)
-		}
-
-		UseSpikyBallTraps: {
-			Label: Enable Spiky Ball Traps?
-			Tooltip: Enable or disable adding spiky ball traps
-		}
-
-		DoDeadManChests: {
-			Label: Enable Dead Man's Chests?
-			Tooltip: Enable or disable adding dead mans chests
-		}
-
-		DeadManChestFrequency: {
-			Label: Dead mans chest frequency
-			Tooltip: Adjust the frequency for adding dead mans chests (0.0 = none, 1.0 = maximum)
-		}
-
-		DoHeartBoulders: {
-			Label: Enable Heart Crystal Boulders?
-			Tooltip: Enable or disable heart boulders
-		}
-
-		HeartBoulderFrequency: {
-			Label: Frequency of heart boulders
-			Tooltip: Adjust the frequency for adding heart boulders (0.0 = none, 1.0 = maximum)
-		}
-
-		DoBouncyBoulders: {
-			Label: Enable bouncy boulders?
-			Tooltip: Enable or disable bouncy boulders
-		}
-
-		BouncyBoulderFrequency: {
-			Label: Frequency of bouncy boulders
-			Tooltip: Adjust the frequency for adding bouncy boulders (0.0 = none, 1.0 = maximum)
-		}
-
-		FlameDamage: {
-			Label: Flamethrower damage
-			Tooltip: Adjust the damage of flamethrower traps
+		SpikyBallDamage: {
+			Tooltip: Adjust the damage of spiky ball traps
+			Label: Spiky Ball Damage
 		}
 
 		DartDamage: {
-			Label: Dart damage
 			Tooltip: Adjust the damage of dart traps
+			Label: Dart Damage
 		}
 
-		SpikyBallDamage: {
-			Label: Spiky ball damage
-			Tooltip: Adjust the damage of spiky ball traps
+		FlameDamage: {
+			Tooltip: Adjust the damage of flamethrower traps
+			Label: Flamethrower Damage
 		}
+
+		Headers: {
+			TrapDamageSettings: Trap Damage Settings Header
+			NewTrapsSettings: New Traps Settings Header
+			CavernChestSettings: Cavern Chest Settings Header
+		}
+
+		BouncyBoulderFrequency: {
+			Tooltip: How many bouncy boulders do you want?
+			Label: Bouncy Boulder Frequency
+		}
+
+		DoBouncyBoulders: {
+			Tooltip: Do you want bouncy boulders?
+			Label: Bouncy Boulders
+		}
+
+		HeartBoulderFrequency: {
+			Tooltip: How many heart boulders do you want?
+			Label: Heart Crystal Boulder Frequency
+		}
+
+		DoHeartBoulders: {
+			Tooltip: Do you want heart crystal boulders?
+			Label: Heart Crystal Boulders
+		}
+
+		DeadManChestFrequency: {
+			Tooltip: How many Dead Man's Chests do you want?
+			Label: Dead Man's Chest Frequency
+		}
+
+		DoDeadManChests: {
+			Tooltip: Do you want Dead Man's Chests?
+			Label: Dead Man's Chests
+		}
+
+		UseSpikyBallTraps: {
+			Tooltip: Do you want spiky ball traps?
+			Label: Spiky Ball Traps
+		}
+
+		NewTrapsFrequency: {
+			Tooltip: How many traps do you want in your world?
+			Label: Trap Frequency
+		}
+
+		WebStackingEnabled: {
+			Tooltip: Not recommended with WGI jumbled chests
+			Label: Stack webs in remnants chests
+		}
+
+		AddMoreChestItems: {
+			Tooltip: Adds modded items from calamity and thorium to underground loot pools
+			Label: Add More Chest Items
+		}
+
+		CavernChestsFrequency: {
+			Tooltip: How many additional chests do you want to generate in the cavern layer? (necessary for Dead Man's Chests)
+			Label: Cavern Chest Frequency
+		}
+
+		DisplayName: Ezrn More Traps Config
 	}
 }
