@@ -125,6 +125,9 @@ public class ScanWorld : ModSystem
             {
                 data.AllChestIndices.Add(i);
 
+                if (c.y < Main.rockLayer)
+                    continue;
+
                 Tile blockUnderChest = Framing.GetTileSafely(c.x, c.y + 2);
 
                 if (blockUnderChest.TileType != TileID.Mud && blockUnderChest.TileType != TileID.RichMahogany &&
@@ -134,6 +137,7 @@ public class ScanWorld : ModSystem
                     //somewhat of a rudimentary check, could be improved
                     //no check to make sure its a gold chest, so if a different type of chest is picked it will 
                     //convert it to deadmans nonetheless
+
                 }
             }
         }

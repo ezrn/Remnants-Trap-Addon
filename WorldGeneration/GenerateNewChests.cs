@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
@@ -34,14 +34,15 @@ public class GenerateNewChests
 
     private (int x, int y) GetRandomCavernPos()
     {
-
         int cavernStart = (int)Main.rockLayer;
-        int cavernEnd = (int)(Main.maxTilesY - 200); // keep some buffer above hell
+        int cavernEnd = Main.maxTilesY - 200; //keep some buffer above hell
 
         int x = WorldGen.genRand.Next(50, Main.maxTilesX - 50);
         int y = WorldGen.genRand.Next(cavernStart, cavernEnd);
+        
         return (x, y);
     }
+
 
     private int GetChestStyleForBiome(int x, int y)
     {

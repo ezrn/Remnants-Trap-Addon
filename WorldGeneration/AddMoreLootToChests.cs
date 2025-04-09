@@ -56,11 +56,14 @@ public class AddMoreLootToChests
         }
     }
 
-    public void AddLootToMyChests(List<int> chestIndices)
+    public void AddLootToMyChests(List<int> chestIndices) //dont do this to any chest above cavern layer
     {
         foreach (int chestIndex in chestIndices)
         {
             Chest c = Main.chest[chestIndex];
+
+            if (c == null || c.y < Main.rockLayer)
+                continue;
 
             // fixed 50% chance to add items to a chest
             if (Main.rand.NextFloat() < 0.50f)
